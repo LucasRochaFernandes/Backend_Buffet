@@ -30,6 +30,7 @@ export default {
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
+  testMatch: ["**/*.spec.ts"],
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -96,7 +97,7 @@ export default {
   // Run tests from one or more projects
   // projects: undefined,
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: "<rootDir>",
+    prefix: "<rootDir>/src",
   }),
 
   // Use this configuration option to add custom reporters to Jest
@@ -147,10 +148,6 @@ export default {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  // testMatch: [
-  //   "**/__tests__/**/*.[jt]s?(x)",
-  //   "**/?(*.)+(spec|test).[tj]s?(x)"
-  // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [

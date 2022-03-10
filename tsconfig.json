@@ -22,7 +22,8 @@
       "@modules/*": ["./src/modules/*"],
       "@shared/*": ["./src/shared/*"],
       "@config/*": ["./src/config/*"],
-      "@errors/*": ["./src/shared/errors"]
+      "@errors/*": ["./src/shared/errors/*"],
+      "@utils/*": ["./src/shared/utils/*"]
     }
   },
   "include": [
