@@ -4,4 +4,4 @@ const routes = Router();
 
 routes.use();
 
-export { routes };  
+export { routes };
