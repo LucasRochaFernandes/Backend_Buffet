@@ -1,0 +1,17 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "username": "admin",
+    "password": "admin",
+    "database": "buffet_database",
+    "port": 5432,
+    "entities": [
+       "./src/modules/*/infra/typeorm/entities/*.ts"
+    ],
+    "migrations": [
+       "./src/shared/infra/typeorm/migrations/*.ts"
+    ],
+    "cli": {
+       "migrationsDir": "./src/shared/infra/typeorm/migrations"
+    }
+ }
