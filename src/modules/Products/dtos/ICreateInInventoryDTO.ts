@@ -1,0 +1,11 @@
+import { ProductType } from "../infra/entities/Inventory";
+
+export interface ICreateInInventoryDTO {
+  id?: string;
+  name: string;
+  description?: string;
+  price: number;
+  type: ProductType;
+  available?: boolean;
+  created_at?: Date;
+}

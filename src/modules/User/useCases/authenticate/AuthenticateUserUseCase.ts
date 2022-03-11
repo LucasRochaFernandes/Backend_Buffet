@@ -29,7 +29,7 @@ export class AuthenticateUserUseCase {
   private dateProvider: IDateProvider;
 
   constructor(
-    @inject("UsersRepository") usersRepo: IUserRepository,
+    @inject("UserRepository") usersRepo: IUserRepository,
     @inject("UsersTokenRepository")
     usersTokenRepository: IUsersTokenRepository,
     @inject("DateProvider") dateProvider: IDateProvider

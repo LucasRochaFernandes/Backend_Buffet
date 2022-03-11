@@ -5,11 +5,11 @@ import { TurnAdminUseCase } from "./TurnAdminUseCase";
 export class TurnAdminController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { user_id } = request.params;
-    const { turnAdmin } = request.body;
+    const { isAdmin } = request.body;
 
     const turnAdminUseCase = container.resolve(TurnAdminUseCase);
 
-    await turnAdminUseCase.execute({ user_id, turnAdmin });
+    await turnAdminUseCase.execute({ user_id, isAdmin });
 
     return response.status(204).send();
   }

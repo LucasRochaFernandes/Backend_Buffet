@@ -16,9 +16,9 @@ export class UserRepository implements IUserRepository {
   async getProfileUser(email: string): Promise<User> {
     return await this.repository.findOne({ email });
   }
-  async turnAdmin({ user_id, turnAdmin }: ITurnAdminDTO): Promise<void> {
+  async turnAdmin({ user_id, isAdmin }: ITurnAdminDTO): Promise<void> {
     const user = await this.getById(user_id);
-    user.isAdmin = turnAdmin;
+    user.isAdmin = isAdmin;
     await this.repository.save(user);
   }
 

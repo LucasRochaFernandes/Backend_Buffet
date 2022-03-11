@@ -11,6 +11,7 @@ const getProfileUserController = new GetProfileUserController();
 import { TurnAdminController } from "@modules/User/useCases/turnAdmin/TurnAdminController";
 import { ensureAuthenticate } from "../middlewares/ensureAuthenticate";
 import { ensureAdmin } from "../middlewares/ensureAdmin";
+import { passwordRoutes } from "./password.routes";
 const turnAdminController = new TurnAdminController();
 
 userRoutes.post("/", createUserController.handle);
@@ -21,5 +22,7 @@ userRoutes.patch(
   ensureAdmin,
   turnAdminController.handle
 );
+
+userRoutes.use(passwordRoutes);
 
 export { userRoutes };

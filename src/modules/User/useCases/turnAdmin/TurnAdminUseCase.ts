@@ -11,7 +11,7 @@ export class TurnAdminUseCase {
 
   async execute(data: ITurnAdminDTO): Promise<void> {
     const { user_id } = data;
-    const userExists = await this.userRepository.getProfileUser(user_id);
+    const userExists = await this.userRepository.getById(user_id);
 
     if (!userExists) {
       throw new AppError("User not exists");
