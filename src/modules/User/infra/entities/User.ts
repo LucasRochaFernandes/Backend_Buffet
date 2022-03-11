@@ -7,7 +7,10 @@ export class User {
   readonly id: string;
 
   @Column()
-  username: string;
+  email: string;
+
+  @Column()
+  name: string;
 
   @Column()
   isAdmin: boolean;

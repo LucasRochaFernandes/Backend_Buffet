@@ -9,8 +9,8 @@ export class GetProfileUserUseCase {
     @inject("UserRepository") private userRepository: IUserRepository
   ) {}
 
-  async execute(username: string): Promise<User> {
-    const userProfile = await this.userRepository.getProfileUser(username);
+  async execute(email: string): Promise<User> {
+    const userProfile = await this.userRepository.getProfileUser(email);
 
     if (!userProfile) {
       throw new AppError("User not found");

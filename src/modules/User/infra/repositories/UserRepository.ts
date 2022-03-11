@@ -13,8 +13,8 @@ export class UserRepository implements IUserRepository {
   async isAdmin(user_id: string): Promise<boolean> {
     return (await this.getById(user_id)).isAdmin;
   }
-  async getProfileUser(username: string): Promise<User> {
-    return await this.repository.findOne({ username });
+  async getProfileUser(email: string): Promise<User> {
+    return await this.repository.findOne({ email });
   }
   async turnAdmin({ user_id, turnAdmin }: ITurnAdminDTO): Promise<void> {
     const user = await this.getById(user_id);
