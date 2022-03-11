@@ -12,10 +12,31 @@ export class InventoryRepository implements IInventoryRepository {
   constructor() {
     this.repository = getRepository(Inventory);
   }
+  async getByName(name: string): Promise<Inventory> {
+    return await this.repository.findOne({ name });
+  }
+  async getById(product_id: string): Promise<Inventory> {
+    return await this.repository.findOne(product_id);
+  }
   async list(data: IListInventoryDTO): Promise<Inventory[]> {
     const { type, maxPrice, name, available } = data;
 
-    return await this.repository.find();
+    let products: Inventory[] = await this.repository.find();
+
+    if (type) {
+      products = products.filter((product) => product.type === type);
+    }
+    if (maxPrice) {
+      products = products.filter((product) => product.price <= maxPrice);
+    }
+    if (available !== undefined) {
+      products = products.filter((product) => product.available === available);
+    }
+    if (name) {
+      products = products.filter((product) => product.name === name);
+    }
+
+    return products;
   }
 
   async create(data: ICreateInInventoryDTO): Promise<Inventory> {

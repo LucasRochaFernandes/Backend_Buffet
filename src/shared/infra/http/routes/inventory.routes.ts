@@ -13,6 +13,9 @@ const changeProductController = new ChangeProductController();
 import { DeleteProductController } from "@modules/Products/useCases/deleteProductInInventory/DeleteProductController";
 const deleteProductController = new DeleteProductController();
 
+import { ListInventoryController } from "@modules/Products/useCases/listInventory/ListInventoryController";
+const listInventoryController = new ListInventoryController();
+
 inventoryRoutes.post(
   "/",
   ensureAuthenticate,
@@ -32,5 +35,7 @@ inventoryRoutes.delete(
   ensureAdmin,
   deleteProductController.handle
 );
+
+inventoryRoutes.get("/", listInventoryController.handle);
 
 export { inventoryRoutes };

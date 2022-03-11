@@ -8,4 +8,6 @@ export interface IInventoryRepository {
   changeProduct(data: IChangeInInventoryDTO): Promise<Inventory>;
   deleteProduct(product_id: string): Promise<void>;
   list(data: IListInventoryDTO): Promise<Inventory[]>;
+  getById(product_id: string): Promise<Inventory>;
+  getByName(name: string): Promise<Inventory>;
 }
