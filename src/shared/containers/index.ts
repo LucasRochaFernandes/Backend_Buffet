@@ -1,3 +1,5 @@
+import "./providers";
+
 import { UserRepository } from "@modules/User/infra/repositories/UserRepository";
 import { UsersTokensRepository } from "@modules/User/infra/repositories/UsersTokenRepository";
 import { IUserRepository } from "@modules/User/IRepositories/IUserRepository";

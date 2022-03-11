@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
 @Entity("users")
-export class User {
+class User {
   @PrimaryColumn()
   readonly id: string;
 
@@ -11,7 +11,7 @@ export class User {
 
   @Column()
   name: string;
-
+  
   @Column()
   isAdmin: boolean;
 
@@ -27,3 +27,5 @@ export class User {
     }
   }
 }
+
+export { User };

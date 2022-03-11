@@ -7,7 +7,7 @@ import { User } from "../entities/User";
 export class UserRepository implements IUserRepository {
   private repository: Repository<User>;
 
-  constructor() {
+  public constructor() {
     this.repository = getRepository(User);
   }
   async isAdmin(user_id: string): Promise<boolean> {

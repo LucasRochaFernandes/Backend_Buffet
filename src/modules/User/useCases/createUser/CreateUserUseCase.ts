@@ -14,6 +14,7 @@ export class CreateUserUseCase {
     const { email } = data;
     const { password } = data;
 
+
     const emailAlreadyExists = await this.userRepository.getProfileUser(email);
 
     if (emailAlreadyExists) {

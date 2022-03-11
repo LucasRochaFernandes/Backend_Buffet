@@ -1,7 +1,11 @@
 import "reflect-metadata";
 import "dotenv/config";
 import "express-async-errors";
-import "@shared/container";
+import "@shared/containers";
+
+import createConnection from "@shared/infra/typeorm";
+createConnection();
+
 
 import express, { NextFunction, Request, Response } from "express";
 import { routes } from "./routes";
