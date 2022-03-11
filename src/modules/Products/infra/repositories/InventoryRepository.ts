@@ -1,5 +1,6 @@
 import { IChangeInInventoryDTO } from "@modules/Products/dtos/IChangeInInventoryDTO";
 import { ICreateInInventoryDTO } from "@modules/Products/dtos/ICreateInInventoryDTO";
+import { IListInventoryDTO } from "@modules/Products/dtos/IListInventoryDTO";
 import { IInventoryRepository } from "@modules/Products/IRepositories/IInventoryRepository";
 import { isDayjs } from "dayjs";
 import { getRepository, InsertEvent, Repository } from "typeorm";
@@ -11,12 +12,17 @@ export class InventoryRepository implements IInventoryRepository {
   constructor() {
     this.repository = getRepository(Inventory);
   }
+  async list(data: IListInventoryDTO): Promise<Inventory[]> {
+    const { type, maxPrice, name, available } = data;
+
+    return await this.repository.find();
+  }
 
   async create(data: ICreateInInventoryDTO): Promise<Inventory> {
     const newProduct = this.repository.create(data);
     return await this.repository.save(newProduct);
   }
-  async chageProduct(data: IChangeInInventoryDTO): Promise<Inventory> {
+  async changeProduct(data: IChangeInInventoryDTO): Promise<Inventory> {
     const { product_id, name, description, type, turnAvailable, price } = data;
 
     const product = await this.repository.findOne(product_id);
@@ -40,7 +46,6 @@ export class InventoryRepository implements IInventoryRepository {
     return await this.repository.save(product);
   }
   async deleteProduct(product_id: string): Promise<void> {
-    const product = await this.repository.findOne(product_id);
-    await this.repository.delete(product);
+    await this.repository.delete(product_id);
   }
 }
