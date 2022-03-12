@@ -23,6 +23,9 @@ const listInventoryController = new ListInventoryController();
 import { ImportImagesController } from "@modules/Products/useCases/importImagesForProducts/importImagesController";
 const importImagesProductController = new ImportImagesController();
 
+import { DeleteImagesProductController } from "@modules/Products/useCases/deleteImages/DeletImagesController";
+const deleteImagesProductController = new DeleteImagesProductController();
+
 inventoryRoutes.post(
   "/",
   ensureAuthenticate,
@@ -51,7 +54,12 @@ inventoryRoutes.post(
   importImagesProductController.handle
 );
 
-inventoryRoutes.delete("/:product_id/images/:filename", ensureAuthenticate, ensureAdmin, )
+inventoryRoutes.delete(
+  "/:product_id/images/:filename",
+  ensureAuthenticate,
+  ensureAdmin,
+  deleteImagesProductController.handle
+);
 
 inventoryRoutes.get("/", listInventoryController.handle);
 

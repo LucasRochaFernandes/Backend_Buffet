@@ -2,13 +2,16 @@ import { ICreateImageProduct } from "@modules/Products/dtos/ICreateImageProduct"
 import { IProductImagesRepository } from "@modules/Products/IRepositories/IProductImagesRepository";
 import { getRepository, Repository } from "typeorm";
 import { ProductImage } from "../entities/ProductImage";
-import { v4 as uuidV4 } from "uuid";
+import { IDeleteImageDTO } from "@modules/Products/dtos/IDeleteImageDTO";
 
 export class ImageProductRepository implements IProductImagesRepository {
   private repository: Repository<ProductImage>;
 
   constructor() {
     this.repository = getRepository(ProductImage);
+  }
+  async deleteImage({ product_id, filename }: IDeleteImageDTO): Promise<void> {
+    await this.repository.delete({ product_id: product_id, image: filename });
   }
 
   async create(data: ICreateImageProduct): Promise<void> {

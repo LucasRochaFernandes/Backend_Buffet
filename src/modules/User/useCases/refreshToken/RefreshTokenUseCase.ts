@@ -62,6 +62,6 @@ export class RefreshTokenUseCase {
       expiresIn: auth.expires_token,
     });
 
-    return { refresh_token, token: newTokenUser };
+    return { refresh_token: newRefresh_Token, token: newTokenUser };
   }
 }
