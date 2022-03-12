@@ -51,6 +51,8 @@ inventoryRoutes.post(
   importImagesProductController.handle
 );
 
+inventoryRoutes.delete("/:product_id/images/:filename", ensureAuthenticate, ensureAdmin, )
+
 inventoryRoutes.get("/", listInventoryController.handle);
 
 export { inventoryRoutes };
