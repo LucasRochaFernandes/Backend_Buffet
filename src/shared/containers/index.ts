@@ -7,6 +7,8 @@ import { IUsersTokenRepository } from "@modules/User/IRepositories/IUsersTokenRe
 import { container } from "tsyringe";
 import { IInventoryRepository } from "@modules/Products/IRepositories/IInventoryRepository";
 import { InventoryRepository } from "@modules/Products/infra/repositories/InventoryRepository";
+import { IProductImagesRepository } from "@modules/Products/IRepositories/IProductImagesRepository";
+import { ImageProductRepository } from "@modules/Products/infra/repositories/ImageProductRepository";
 
 container.registerSingleton<IUserRepository>("UserRepository", UserRepository);
 
@@ -18,4 +20,9 @@ container.registerSingleton<IUsersTokenRepository>(
 container.registerSingleton<IInventoryRepository>(
   "InventoryRepository",
   InventoryRepository
+);
+
+container.registerSingleton<IProductImagesRepository>(
+  "ProductImageRepository",
+  ImageProductRepository
 );

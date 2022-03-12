@@ -19,7 +19,7 @@ export class ProductImage {
   product: Inventory;
 
   @Column()
-  readonly product_id: string;
+  product_id: string;
 
   @Column()
   image: string;
