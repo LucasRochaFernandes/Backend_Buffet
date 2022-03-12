@@ -7,5 +7,6 @@ export interface ICreateInInventoryDTO {
   price: number;
   type: ProductType;
   available?: boolean;
+  amount_available: number;
   created_at?: Date;
 }

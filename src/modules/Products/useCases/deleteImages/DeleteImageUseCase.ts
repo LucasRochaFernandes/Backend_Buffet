@@ -3,6 +3,7 @@ import { IInventoryRepository } from "@modules/Products/IRepositories/IInventory
 import { IProductImagesRepository } from "@modules/Products/IRepositories/IProductImagesRepository";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+import { deleteFile } from "src/utils/DeleteFile";
 
 @injectable()
 export class DeleteImageUseCase {
@@ -14,14 +15,14 @@ export class DeleteImageUseCase {
   ) {}
 
   async execute(data: IDeleteImageDTO): Promise<void> {
-    const { product_id } = data;
+    const { product_id, filename } = data;
 
     const productExists = await this.inventoryRepository.getById(product_id);
 
     if (!productExists) {
       throw new AppError("Product not exits");
     }
-
     await this.imageProductRepository.deleteImage(data);
+    await deleteFile(`./tmp/products/${filename}`);
   }
 }

@@ -10,6 +10,9 @@ export class ImageProductRepository implements IProductImagesRepository {
   constructor() {
     this.repository = getRepository(ProductImage);
   }
+  async getImagesByProduct(product_id: string): Promise<ProductImage[]> {
+    return await this.repository.find({ product_id });
+  }
   async deleteImage({ product_id, filename }: IDeleteImageDTO): Promise<void> {
     await this.repository.delete({ product_id: product_id, image: filename });
   }

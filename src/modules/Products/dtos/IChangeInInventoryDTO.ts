@@ -7,4 +7,5 @@ export interface IChangeInInventoryDTO {
   type?: ProductType;
   price?: number;
   turnAvailable?: boolean;
+  amount_available?: number;
 }

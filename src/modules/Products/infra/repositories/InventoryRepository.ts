@@ -44,7 +44,15 @@ export class InventoryRepository implements IInventoryRepository {
     return await this.repository.save(newProduct);
   }
   async changeProduct(data: IChangeInInventoryDTO): Promise<Inventory> {
-    const { product_id, name, description, type, turnAvailable, price } = data;
+    const {
+      product_id,
+      name,
+      description,
+      type,
+      turnAvailable,
+      price,
+      amount_available,
+    } = data;
 
     const product = await this.repository.findOne(product_id);
 
@@ -62,6 +70,9 @@ export class InventoryRepository implements IInventoryRepository {
     }
     if (price) {
       product.price = price;
+    }
+    if (amount_available) {
+      product.amount_available = amount_available;
     }
 
     return await this.repository.save(product);

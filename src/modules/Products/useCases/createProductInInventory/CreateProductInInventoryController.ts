@@ -4,7 +4,7 @@ import { CreateProductInInventoryUseCase } from "./CreateProductInInventoryUseCa
 
 export class CreateProductInInventoryController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { name, description, type, price } = request.body;
+    const { name, description, type, price, amount } = request.body;
 
     const createProductInInventoryUseCase = container.resolve(
       CreateProductInInventoryUseCase
@@ -15,6 +15,7 @@ export class CreateProductInInventoryController {
       description,
       type,
       price,
+      amount_available: amount,
     });
 
     return response.status(201).json(product);

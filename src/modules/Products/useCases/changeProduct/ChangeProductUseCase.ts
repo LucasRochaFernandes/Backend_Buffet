@@ -13,6 +13,11 @@ export class ChangeProductUseCase {
 
   async execute(data: IChangeInInventoryDTO): Promise<Inventory> {
     const { product_id } = data;
+    const { amount_available } = data;
+
+    if (amount_available < 0) {
+      throw new AppError("Amount invalid");
+    }
 
     const productExists = await this.inventoryRepository.getById(product_id);
 

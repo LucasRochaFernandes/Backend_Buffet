@@ -26,6 +26,9 @@ export class Inventory {
   @Column()
   available: boolean;
 
+  @Column()
+  amount_available: number;
+
   @CreateDateColumn()
   created_at: Date;
 
