@@ -9,6 +9,8 @@ import { IInventoryRepository } from "@modules/Products/IRepositories/IInventory
 import { InventoryRepository } from "@modules/Products/infra/repositories/InventoryRepository";
 import { IProductImagesRepository } from "@modules/Products/IRepositories/IProductImagesRepository";
 import { ImageProductRepository } from "@modules/Products/infra/repositories/ImageProductRepository";
+import { ProductsOrderRepository } from "@modules/Orders/infra/repositories/ProductsOrderRepository";
+import { IProductsOrderRepository } from "@modules/Orders/IRepositories/IProductsOrderRepository";
 
 container.registerSingleton<IUserRepository>("UserRepository", UserRepository);
 
@@ -25,4 +27,9 @@ container.registerSingleton<IInventoryRepository>(
 container.registerSingleton<IProductImagesRepository>(
   "ProductImageRepository",
   ImageProductRepository
+);
+
+container.registerSingleton<IProductsOrderRepository>(
+  "ProductsOrderRepository",
+  ProductsOrderRepository
 );

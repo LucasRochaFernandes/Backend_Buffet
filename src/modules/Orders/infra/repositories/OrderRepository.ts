@@ -9,6 +9,9 @@ export class OrderRepository implements IOrderRepository {
   constructor() {
     this.repository = getRepository(Order);
   }
+  async getById(order_id: string): Promise<Order> {
+    return await this.repository.findOne(order_id);
+  }
 
   async create(data: ICreateOrderDTO): Promise<Order> {
     const newOrder = this.repository.create(data);
