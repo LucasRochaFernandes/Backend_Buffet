@@ -14,7 +14,11 @@ export class OrderRepository implements IOrderRepository {
   }
 
   async create(data: ICreateOrderDTO): Promise<Order> {
+    const { id } = data;
     const newOrder = this.repository.create(data);
+    if (!id) {
+      newOrder.total = 0;
+    }
     return await this.repository.save(newOrder);
   }
 }

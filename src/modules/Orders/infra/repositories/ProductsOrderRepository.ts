@@ -1,7 +1,6 @@
 import { ICreateProductOrderDTO } from "@modules/Orders/dtos/ICreateProductOrderDTO";
 import { IProductsOrderRepository } from "@modules/Orders/IRepositories/IProductsOrderRepository";
 import { getRepository, Repository } from "typeorm";
-import { Order } from "../entities/Order";
 import { ProductsOrder } from "../entities/ProductsOrder";
 
 export class ProductsOrderRepository implements IProductsOrderRepository {

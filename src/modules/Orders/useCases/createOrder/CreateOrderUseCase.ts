@@ -12,6 +12,7 @@ export class CreateOrderUseCase {
   ) {}
 
   async execute(data: ICreateOrderDTO): Promise<void> {
+    
     await this.orderRepository.create(data);
   }
 }
