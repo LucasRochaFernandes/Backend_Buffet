@@ -9,6 +9,12 @@ export class ProductsOrderRepository implements IProductsOrderRepository {
   constructor() {
     this.repository = getRepository(ProductsOrder);
   }
+  async getByProductandOrderId(
+    product_id: string,
+    order_id: string
+  ): Promise<ProductsOrder> {
+    return await this.repository.findOne({ product_id, order_id });
+  }
   async getById(productOrder_id: string): Promise<ProductsOrder> {
     return await this.repository.findOne(productOrder_id);
   }

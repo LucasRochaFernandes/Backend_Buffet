@@ -8,4 +8,8 @@ export interface IProductsOrderRepository {
   getByOrder(order_id: string): Promise<ProductsOrder[]>;
   getOrderId(productOrder_id: string): Promise<string>;
   getById(productOrder_id: string): Promise<ProductsOrder>;
+  getByProductandOrderId(
+    product_id: string,
+    order_id: string
+  ): Promise<ProductsOrder>;
 }

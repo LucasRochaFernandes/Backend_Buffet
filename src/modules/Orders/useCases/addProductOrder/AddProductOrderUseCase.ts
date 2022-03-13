@@ -36,6 +36,10 @@ export class AddProductOrderUseCase {
       throw new AppError("Order not exists");
     }
 
+    if (order.done) {
+      throw new AppError("Order already done");
+    }
+
     order.total = Number(order.total) + Number(total_product_price);
 
     await this.orderRepository.create(order);
@@ -46,6 +50,23 @@ export class AddProductOrderUseCase {
       throw new AppError("product amount unavailable");
     } else {
       await this.inventoryRepository.create(product);
+    }
+
+    const productOrder =
+      await this.productsOrderRepository.getByProductandOrderId(
+        product_id,
+        order_id
+      );
+
+    if (productOrder) {
+      productOrder.product_amount =
+        Number(productOrder.product_amount) + Number(product_amount);
+
+      productOrder.total_product_price =
+        Number(productOrder.total_product_price) +
+        Number(product_amount * product.price);
+        
+      return await this.productsOrderRepository.create(productOrder);
     }
 
     return await this.productsOrderRepository.create({

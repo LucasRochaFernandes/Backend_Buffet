@@ -16,6 +16,6 @@ export class AddProductOrderController {
       product_amount,
     });
 
-    return response.status(204).json(productsOrder);
+    return response.json(productsOrder);
   }
 }
