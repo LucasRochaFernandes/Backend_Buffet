@@ -1,4 +1,5 @@
 import { User } from "@modules/User/infra/entities/User";
+import { v4 as uuidV4 } from "uuid";
 import {
   Column,
   CreateDateColumn,
@@ -7,24 +8,28 @@ import {
   ManyToOne,
   PrimaryColumn,
 } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
 
-export enum OrderType {
+enum OrderType {
   LOCAL = "local",
   DELIVERY = "delivery",
 }
 
+enum PaymentOrder {
+  PIX = "pix",
+  CASH = "cash",
+  CARD = "card",
+}
 @Entity("orders")
-export class Orders {
+export class Order {
   @PrimaryColumn()
   readonly id: string;
 
   @Column()
-  user_id?: string;
+  user_id: string;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id" })
-  user?: User;
+  user: User;
 
   @Column()
   type: OrderType;
@@ -40,6 +45,9 @@ export class Orders {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @Column()
+  payment: PaymentOrder;
 
   constructor() {
     if (!this.id) {
