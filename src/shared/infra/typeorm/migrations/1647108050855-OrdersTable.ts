@@ -29,7 +29,6 @@ export class OrdersTable1647108050855 implements MigrationInterface {
           {
             name: "total",
             type: "numeric",
-            isNullable: false,
           },
           {
             name: "finished_at",

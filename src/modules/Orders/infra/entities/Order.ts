@@ -1,4 +1,4 @@
-import { User } from "@modules/User/infra/entities/User";
+import { User } from "../../../User/infra/entities/User";
 import { v4 as uuidV4 } from "uuid";
 import {
   Column,
@@ -9,7 +9,7 @@ import {
   PrimaryColumn,
 } from "typeorm";
 
- export enum OrderType {
+export enum OrderType {
   LOCAL = "local",
   DELIVERY = "delivery",
 }
@@ -25,11 +25,11 @@ export class Order {
   readonly id: string;
 
   @Column()
-  user_id: string;
+  user_id?: string;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id" })
-  user: User;
+  user?: User;
 
   @Column()
   type: OrderType;

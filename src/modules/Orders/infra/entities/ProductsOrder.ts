@@ -1,4 +1,4 @@
-import { Inventory } from "@modules/Products/infra/entities/Inventory";
+import { Inventory } from "../../../Products/infra/entities/Inventory";
 import { v4 as uuidV4 } from "uuid";
 import {
   Column,
@@ -6,7 +6,6 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryColumn,
 } from "typeorm";
 import { Order } from "./Order";
