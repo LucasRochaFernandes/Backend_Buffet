@@ -9,12 +9,12 @@ import {
   PrimaryColumn,
 } from "typeorm";
 
-enum OrderType {
+ export enum OrderType {
   LOCAL = "local",
   DELIVERY = "delivery",
 }
 
-enum PaymentOrder {
+export enum PaymentOrder {
   PIX = "pix",
   CASH = "cash",
   CARD = "card",
