@@ -27,6 +27,9 @@ export class AddProductOrderUseCase {
     if (!product) {
       throw new AppError("Product not exists");
     }
+    if (!product.available) {
+      throw new AppError("Product does not available");
+    }
 
     const total_product_price: number = product.price * product_amount;
 
@@ -65,7 +68,7 @@ export class AddProductOrderUseCase {
       productOrder.total_product_price =
         Number(productOrder.total_product_price) +
         Number(product_amount * product.price);
-        
+
       return await this.productsOrderRepository.create(productOrder);
     }
 
