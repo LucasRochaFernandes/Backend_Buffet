@@ -4,4 +4,4 @@ This project aims to create a backend with Node.js that caters to catering. It w
 </span>
 
 # Status
---In progress--
+`In progress`
